@@ -43,7 +43,7 @@ Modes are as follows:
 
 Example execution of the original Super Smoother on the GPU (computing the periods of 136 RR-Lyrae)
 
-$ ./main ../data/SDSS_stripe82_band_z.txt 0.1 10.0 330000 1 9.0
+''$ ./main ../data/SDSS_stripe82_band_z.txt 0.1 10.0 330000 1 9.0
 
 Load CUDA runtime (initialization overhead)
 
@@ -62,7 +62,7 @@ Unique objects in file: 136
 Number of objects skipped because they didn't have 4 observations: 0
 Printing the best periods to file: bestperiods_SS.txt
 Total time to compute batch: 47.682473
-[Validation] Sum of all periods: 67.809079
+[Validation] Sum of all periods: 67.809079''
 
 
 Observe the following: 
