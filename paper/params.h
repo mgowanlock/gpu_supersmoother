@@ -1,7 +1,5 @@
 #define NTHREADSCPU 16 //used for parallelizing GPU tasks and the number of threads used in the CPU implementations
 #define DTYPE double  //float or double
-#define SMALLBLOCKSIZE 32 //CUDA block size for kernels that should use small block sizes
-#define LARGEBLOCKSIZE 1024 //CUDA block size for kernels that should use large block sizes
 #define NUMGPU 1 //the number of GPUs
 #define NSTREAMSPERGPU 1 //streams per GPU for batching the frequences (use 1)
 
@@ -36,8 +34,14 @@
 					//e.g., may want to ignore objects with <50 data points
 					//Must be at least 4 because original SS requires this in part of the code
 
+
+//do not change
+#define SMALLBLOCKSIZE 32 //CUDA block size for kernels that should use small block sizes
+#define LARGEBLOCKSIZE 1024 //CUDA block size for kernels that should use large block sizes
+
 //This will throw a bunch of compiler warnings if OBSTHRESH<4
 #if OBSTHRESH<4
 #undef OBSTHRESH
 #define OBSTHRESH 4
 #endif
+//end do not change
