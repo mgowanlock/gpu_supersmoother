@@ -42,6 +42,7 @@ Modes are as follows:
 * 4- [Single-pass Super Smoother] CPU to process a single object or batch of objects
 
 Example execution of the original Super Smoother on the GPU (computing the periods of 136 RR-Lyrae)
+
 $ ./main ../data/SDSS_stripe82_band_z.txt 0.1 10.0 330000 1 9.0
 
 Load CUDA runtime (initialization overhead)
