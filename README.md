@@ -1,4 +1,6 @@
-# GPU-Accelerated Super Smoother Algorithm (accompanying paper, "GPU-Enabled Searches for Periodic Signals of Unknown Shape" is under review).
+# GPU-Accelerated Super Smoother Algorithm
+
+Accompanying paper, "GPU-Enabled Searches for Periodic Signals of Unknown Shape" is under review.
 
 Code authors: Mike Gowanlock and Nat Butler
 
