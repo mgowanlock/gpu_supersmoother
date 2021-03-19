@@ -24,7 +24,7 @@ We include two versions of the algorithm. The original Super Smoother algorithm,
 ## Data Directory
 The data directory contains the file "SDSS_stripe82_band_z.txt". The file has measurements of 136 RR-Lyrae from SDSS Stripe 82.
 
-The dataset files should be in the format: object id, time, mag, dmag (error). See the file in the data directory for an example.
+The dataset files should be in the format: object id, time, mag, dmag (error). See the file in the data directory as an example.
 
 Note that if you do not have error on your magnitude measurements, you should add an error column to your file.  Use an error of 1.0 for all measurements, and not 0.0 (or a very small number), because it may cause issues related to numerical overflow.
 
