@@ -94,12 +94,12 @@ The paper version of the code lists several parameters, whereas the release vers
 * DTYPE double  --- The precision that will be used for the computation. Values: float or double
 * NUMGPU 1 --- The number of GPUs in your system. Values: >=1
 * NSTREAMSPERGPU 1 --- Streams per GPU for batching the frequences. This is used to overlap GPU and host-side tasks. It may be useful in the future if GPUs continue to increase in performance over the CPU. Values: >=1
-* ORIGINALMODE -1 --- GPU Kernel used by the original algorithm.
+* ORIGINALMODE -1 --- GPU Kernel used by the original Super Smoother algorithm.
     * -1: Cascade: first try SM 1 thread per frequency kernel, then run global memory kernel (2 then 0 below)	
     * 0: global memory baseline
     * 1: shared memory for x, y, z arrays, with one small block per frequency
     * 2: shared memory for x, y, z arrays, one thread per frequency with small block
-* SINGLEPASSMODE 0 --- GPU Kernel used by the original algorithm. 
+* SINGLEPASSMODE 0 --- GPU Kernel used by the Single-pass Super Smoother algorithm. 
     * 0: global memory baseline
     * 1: shared memory for x, y, z arrays, with one small block per frequency
     * 2: shared memory for x, y, z arrays, one thread per frequency with small block
@@ -113,4 +113,4 @@ The paper version of the code lists several parameters, whereas the release vers
 * PRINTPGRAM 0 --- Enable to print the periodogram
     * 0: Do not print
     * 1: Print to pgram_SS.txt					
-* OBSTHRESH 4 --- Ignore computing objects with < this number of data points (e.g., may want to ignore objects with <30 data points because solution may not be very accurate). Must be >=4 because original Super Smoother requires this or a segmentation fault will occur. Values: >=4.
+* OBSTHRESH 4 --- Ignore computing objects with < this number of data points (e.g., may want to ignore objects with <30 data points because solution may not be very accurate). Must be >=4 because the original Super Smoother algorithm requires this or a segmentation fault will occur. Values: >=4.
