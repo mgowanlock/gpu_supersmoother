@@ -5,7 +5,7 @@ Accompanying paper, "GPU-Enabled Searches for Periodic Signals of Unknown Shape"
 Code authors: Mike Gowanlock and Nat Butler
 
 ## Questions/Comments
-Feel free to e-mail Mike Gowanlock. 
+Feel free to e-mail Mike Gowanlock or Nat Butler. We would also be happy to derive some periods for you. 
 
 ## There are four directories:
 * data
