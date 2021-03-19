@@ -95,10 +95,10 @@ The paper version of the code lists several parameters, whereas the release vers
 * NUMGPU 1 --- The number of GPUs in your system. Values: >=1
 * NSTREAMSPERGPU 1 --- Streams per GPU for batching the frequences. This is used to overlap GPU and host-side tasks. It may be useful in the future if GPUs continue to increase in performance over the CPU. Values: >=1
 * ORIGINALMODE -1 --- GPU Kernel used by the original algorithm.
-    -1: Cascade: first try SM 1 thread per freq, then run global memory kernel (2 then 0 below)	
-    0: global memory baseline
-    1: shared memory for x, y, z arrays, with one small block per frequency
-    2: shared memory for x, y, z arrays, one thread per frequency with small block
+    * -1: Cascade: first try SM 1 thread per freq, then run global memory kernel (2 then 0 below)	
+    * 0: global memory baseline
+    * 1: shared memory for x, y, z arrays, with one small block per frequency
+    * 2: shared memory for x, y, z arrays, one thread per frequency with small block
 * SINGLEPASSMODE 0 --- GPU Kernel used by the original algorithm. 
     0: global memory baseline
     1: shared memory for x, y, z arrays, with one small block per frequency
