@@ -75,7 +75,11 @@ Observe the following:
 * A summary of the execution will be stored in gpu_stats.txt.
 
 ## Example Directory
-  * The example directory contains the derived periods for two implementations: 1) the original Super Smoother algorithm; and 2) the more efficient single-pass variant of the algorithm.
+  * The example directory contains the derived periods for two implementations: 1) the original Super Smoother algorithm; and 2) the more efficient single-pass variant of the algorithm. The parameters were as follows:
+
+Minimum Frequency: 0.100000
+Maximum Frequency: 10.000000
+Number of frequencies to test: 330000
 
 
 ## Parameters in params.h
