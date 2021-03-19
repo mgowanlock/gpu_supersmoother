@@ -15,10 +15,6 @@ Feel free to e-mail Mike Gowanlock.
 
 The data directory includes test data (136 RR-Lyrae from SDSS Stripe 82, which was used in the paper). The paper directory contains the source code used for the experimental evaluation in the paper. The difference between the paper and release code is that many of the GPU performance parameters have been selected for the user so that a reasonable default configuration can be used without extensive knowledge of the details in the paper. However, if the user is interested in all of the bells and whistles included in the paper, then they should use the paper implementation.
 
-
-## Example Directory
-  * The example directory contains the derived periods for two implementations: 1) the original Super Smoother algorithm; and 2) the more efficient single-pass variant of the algorithm.
-
 ## Single Object and Batched Modes
 As described in the paper, the GPU algorithm allows for both a single object to be processed (e.g., a user wants to process a large time series or a large number of frequencies need to be searched). And it also allows for a batch of objects to be processed (e.g., deriving periods for an entire astronomical catalog). The algorithm will automatically determine whether you have input a file with a single or multiple objects and execute the correct version of the code.
 
@@ -75,6 +71,8 @@ Observe the following:
 * The sum of all periods is also output. This is probably not useful; it was used for validation when testing the algorithm. It may be useful for some users, so we left it in the code.
 * A summary of the execution will be stored in gpu_stats.txt.
 
+## Example Directory
+  * The example directory contains the derived periods for two implementations: 1) the original Super Smoother algorithm; and 2) the more efficient single-pass variant of the algorithm.
 
 
 ## Parameters in params.h
