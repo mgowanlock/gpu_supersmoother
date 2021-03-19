@@ -35,7 +35,7 @@ A makefile has been included for each implementation. Make sure to update the co
 After compiling the computer program, you must enter the following command line arguments:
 \<dataset file name\> \<minimum frequency\> \<maximum frequency\> \<number of frequencies to search\> \<mode\> \<alpha\>
   
-
+Modes are as follows:
 * 1- [Original Super Smoother] GPU to process a single object or batch of objects
 * 2- [Single-pass Super Smoother] GPU to process a single object or batch of objects
 * 3- [Original Super Smoother] CPU to process a single object or batch of objects
