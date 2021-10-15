@@ -136,7 +136,8 @@ To build the shared libraries from source, open the Makefile and modify the foll
 -DNTHREADSCPU=16
 ```
 
-Next, run the following command, which will build the shared libraries. Note that these binaries are large, as they are compiled to maximize GPU compatibility, and thus are compiled for the following compute capabilities: 6.0, 6.1, 7.0, 7.2, 7.5, 8.0 (these encompass Pascal, Volta, Turing, and Ampere architectures).
+Next, run the following command, which will build the shared libraries. Note that these binaries are large, as they are compiled to maximize GPU compatibility, and thus are compiled for the following compute capabilities: 6.0, 6.1, 7.0, 7.2, 7.5, 8.0 (these encompass Pascal, Volta, Turing, and Ampere architectures). We have tested that these binaries work on Pascal (6.1) and Turing (7.5) architectures.
+
 ```
 $make make_python_shared_libs
 ```
