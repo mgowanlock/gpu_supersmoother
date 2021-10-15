@@ -31,7 +31,7 @@ The dataset files should be in the format: object id, time, mag, dmag (error). S
 Note that if you do not have error on your magnitude measurements, you should add an error column to your file.  Use an error of 1.0 for all measurements, and not 0.0 (or a very small number), because it may cause issues related to numerical overflow. If you are using the Python interface, you can simply create an error array.
 
 ## Makefile and using the C Interface
-A makefile has been included for each implementation. Make sure to update the compute capability flag to ensure you compile for the correct architecture. To find out which compute capability your GPU has, please refer to the compute capability table on Wikipedia: https://en.wikipedia.org/wiki/CUDA.
+A makefile has been included. Make sure to update the compute capability flag to ensure you compile for the correct architecture. To find out which compute capability your GPU has, please refer to the compute capability table on Wikipedia: https://en.wikipedia.org/wiki/CUDA.
 
 To compile the C version of the program and use the C interface, use the following commands:
 ```
