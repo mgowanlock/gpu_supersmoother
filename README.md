@@ -127,16 +127,16 @@ The paper version of the code lists several parameters, whereas the release vers
 
 
 ## Python Interface
-The Python interface calls a C shared library that has the compiled sources. You can either build the shared libraries or use the precompiled shared libraries. We recommend building them from source, because there are a couple of machine specific parameters that should be set.
+The Python interface calls a C shared library of the compiled sources. You can either build the shared libraries or use the precompiled shared libraries. We recommend building them from source, because there are a couple of machine specific parameters that should be set.
 
-To build the shared libraries from source, open the Makefile and modify the following variables (descriptions of parameters are above). 
+To build the shared libraries from source, open the Makefile and modify the following variables (descriptions of the parameters are above). 
 ```
 -DNUMGPU=1
 -DBETA=0.75
 -DNTHREADSCPU=16
 ```
 
-Next, run the following command, which will build the shared libraries. Note that these binaries are large, as they are compiled to maximize GPU compatibility, and are compiled for the following compute capabilities: 6.0, 6.1, 7.0, 7.2, 7.5, 8.0 (these encompass Pascal, Volta, Turing, and Ampere architectures).
+Next, run the following command, which will build the shared libraries. Note that these binaries are large, as they are compiled to maximize GPU compatibility, and thus are compiled for the following compute capabilities: 6.0, 6.1, 7.0, 7.2, 7.5, 8.0 (these encompass Pascal, Volta, Turing, and Ampere architectures).
 ```
 $make make_python_shared_libs
 ```
