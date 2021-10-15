@@ -8,7 +8,7 @@ Code authors: Mike Gowanlock and Nat Butler
 Feel free to e-mail Mike Gowanlock or Nat Butler. Mike would be delighted to derive some periods for you. 
 
 ## Python Interface
-If you would like to skip all of the details regarding the C/CUDA implementation and configuration options and get directly to using the Python interface, please scroll down to the Python interface section below. 
+If you would like to skip all of the details regarding the C/CUDA implementation and configuration options and go directly to using the Python interface, please scroll down to the Python interface section below. 
 
 ## There are three directories:
 * data
