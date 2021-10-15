@@ -154,6 +154,8 @@ The Python module contains a few additional options over the C interface.
 * By default, it will set the alpha parameter to 9.0 for period finding.
 * By default, it will use 32 bit floating point precision (FP32) over FP64. This is because many consumer grade GPUs have limited hardware dedicated to FP64. However, the user may wish to change this to FP64.
 
+For each object, the Python module will return the period at the highest peak in the periodogram, and the periodogram itself.
+
 
 
 
