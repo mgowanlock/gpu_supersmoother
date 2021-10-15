@@ -100,7 +100,7 @@ The paper version of the code lists several parameters, whereas the release vers
 
 
 * NTHREADSCPU 16 --- Use the number of physical cores in your system. Used for parallelizing host-side tasks in the GPU implementation and it's the number of threads that will be used in the parallel CPU implementation. Values: >=1
-* DTYPE double  --- The precision that will be used for the computation. Values: float or double
+* DTYPE double  --- The precision that will be used for the computation. Values: float or double. You may want to select float if your GPU has limited FP64 support. Precision differences are likely to be minimal.
 * NUMGPU 1 --- The number of GPUs in your system. Values: >=1
 * NSTREAMSPERGPU 1 --- Streams per GPU for batching the frequences. This is used to overlap GPU and host-side tasks. It may be useful in the future if GPUs continue to increase in performance over the CPU. Values: >=1
 * ORIGINALMODE -1 --- GPU Kernel used by the original Super Smoother algorithm.
