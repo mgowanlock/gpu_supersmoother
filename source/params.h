@@ -1,36 +1,31 @@
-//alpha used in the SS algorithm (0-10)
-#define ALPHA 9.0 //default 9.0 for period finding
-
-
-
-//#define NTHREADSCPU 18 //used for parallelizing GPU tasks and the number of threads used in the CPU implementations
-//#define DTYPE double  //float or double
+#define NTHREADSCPU 18 //used for parallelizing GPU tasks and the number of threads used in the CPU implementations
+#define DTYPE double  //float or double
 #define SMALLBLOCKSIZE 32 //CUDA block size for kernels that should use small block sizes
 #define LARGEBLOCKSIZE 1024 //CUDA block size for kernels that should use large block sizes
-//#define NUMGPU 1 //the number of GPUs
+#define NUMGPU 1 //the number of GPUs
 #define NSTREAMSPERGPU 1 //streams per GPU for batching the frequences (use 1)
 
 
 
 
 //Original Supersmoother with multiple passes over the data
-//#define ORIGINALMODE -1 //-1 -- cascade: first try SM 1 thread per freq, then try SM 1 block per freq, then run global memory kernel
+#define ORIGINALMODE -1 //-1 -- cascade: first try SM 1 thread per freq, then try SM 1 block per freq, then run global memory kernel
                        //0 -- global memory baseline
 					   //1 -- shared memory for x, y, z arrays, with one small block per frequency
 					   //2 -- shared memory for x, y, z arrays, one thread per frequency with small block
 
 
 //SuperSmoother with Single Pass
-//#define SINGLEPASSMODE 0 //0 -- global memory baseline
+#define SINGLEPASSMODE 0 //0 -- global memory baseline
 					   //1 -- shared memory for x, y, z arrays, one small block per frequency
 					   //2 -- shared memory for x, y, z arrays, one thread per frequency with small block
 
-//#define COALESCED 1 //for the single pass global memory kernel (no equivalent for original multi-pass)
+#define COALESCED 1 //for the single pass global memory kernel (no equivalent for original multi-pass)
 					//when SINGLEPASSMODE==0
 					//uses coalesced accesses to x, y, z
 
 
-//#define PRINTPERIODS 2 //0- do not print found periods
+#define PRINTPERIODS 2 //0- do not print found periods
 					   //1-print found periods to stdout							
 					   //2- print found periods to file (bestperiods_SS.txt)
 
