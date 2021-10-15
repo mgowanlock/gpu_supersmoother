@@ -5,15 +5,17 @@ Accompanying paper, "GPU-Enabled Searches for Periodic Signals of Unknown Shape"
 Code authors: Mike Gowanlock and Nat Butler
 
 ## Questions/Comments
-Feel free to e-mail Mike Gowanlock or Nat Butler. Mike would also be happy to derive some periods for you. 
+Feel free to e-mail Mike Gowanlock or Nat Butler. Mike would be delighted to derive some periods for you. 
 
-## There are four directories:
+## Python Interface
+If you would like to skip all of the details regarding the C/CUDA implementation and configuration options and get directly to using the Python interface, please scroll down to the Python interface section below. 
+
+## There are three directories:
 * data
 * example
-* paper
-* release
+* source
 
-The data directory includes test data (136 RR-Lyrae from SDSS Stripe 82, which was used in the paper). The paper directory contains the source code used for the experimental evaluation in the paper. The difference between the paper and release code is that many of the GPU performance parameters have been selected for the user so that a reasonable default configuration can be used without extensive knowledge of the details in the paper. However, if the user is interested in all of the bells and whistles included in the paper, then they should use the paper implementation.
+The data directory includes test data (136 RR-Lyrae from SDSS Stripe 82, which was used in the paper). The example directory has the period solutions derived for the 136 RR-Lyrae above. The source directory contains the C/C++/CUDA source code and a Python wrapper that can be used to call the C code using a shared library. Installation details are below.
 
 ## Single Object and Batched Modes
 As described in the paper, the GPU algorithm allows for both a single object to be processed (e.g., a user wants to process a large time series or a large number of frequencies need to be searched). And it also allows for a batch of objects to be processed (e.g., deriving periods for numerous objects in an astronomical catalog). The algorithm will automatically determine whether you have input a file with a single or multiple objects and execute the correct version of the code.
@@ -26,12 +28,17 @@ The data directory contains the file "SDSS_stripe82_band_z.txt". The file has me
 
 The dataset files should be in the format: object id, time, mag, dmag (error). See the file in the data directory as an example.
 
-Note that if you do not have error on your magnitude measurements, you should add an error column to your file.  Use an error of 1.0 for all measurements, and not 0.0 (or a very small number), because it may cause issues related to numerical overflow.
+Note that if you do not have error on your magnitude measurements, you should add an error column to your file.  Use an error of 1.0 for all measurements, and not 0.0 (or a very small number), because it may cause issues related to numerical overflow. If you are using the Python interface, you can simply create an error array.
 
-## Makefile
+## Makefile and using the C Interface
 A makefile has been included for each implementation. Make sure to update the compute capability flag to ensure you compile for the correct architecture. To find out which compute capability your GPU has, please refer to the compute capability table on Wikipedia: https://en.wikipedia.org/wiki/CUDA.
 
-## Running the program:
+To compile the C version of the program and use the C interface, use the following commands:
+```
+$make
+```
+
+## Running the program using the C interface:
 After compiling the computer program, you must enter the following command line arguments:
 \<dataset file name\> \<minimum frequency\> \<maximum frequency\> \<number of frequencies to search\> \<mode\> \<alpha\>
   
@@ -62,8 +69,8 @@ Unique objects in file: 136
 
 Number of objects skipped because they didn't have 4 observations: 0
 Printing the best periods to file: bestperiods_SS.txt
-Total time to compute batch: 47.682473
-[Validation] Sum of all periods: 67.809079
+Total time to compute batch: 7.878643
+[Validation] Sum of all periods: 76.111053
 ```
 
 
@@ -113,4 +120,38 @@ The paper version of the code lists several parameters, whereas the release vers
 * PRINTPGRAM 0 --- Enable to print the periodogram
     * 0: Do not print
     * 1: Print to pgram_SS.txt					
+* BETA 0.75 --- The GPU global memory underestimation factor. Used to reduce the total amount of global memory that the algorithm will use, which may be useful on a non-dedicated system (e.g., the GPU is shared with other users or is used to render a user interface).
 * OBSTHRESH 4 --- Ignore computing objects with < this number of data points (e.g., may want to ignore objects with <30 data points because solution may not be very accurate). Must be >=4 because the original Super Smoother algorithm requires this or a segmentation fault will occur. Values: >=4.
+
+
+## Python Interface
+The Python interface calls a C shared library that has the compiled sources. You can either build the shared libraries or use the precompiled shared libraries. We recommend building them from source, because there are a couple of machine specific parameters that should be set.
+
+To build the shared libraries from source, open the Makefile and modify the following variables (descriptions of parameters are above). 
+```
+-DNUMGPU=1
+-DBETA=0.75
+-DNTHREADSCPU=16
+```
+
+Next, run the following command, which will build the shared libraries. Note that these binaries are large, as they are compiled to maximize GPU compatibility, and are compiled for the following compute capabilities: 6.0, 6.1, 7.0, 7.2, 7.5, 8.0 (these encompass Pascal, Volta, Turing, and Ampere architectures).
+```
+$make make_python_shared_libs
+```
+
+This will generate two shared libraries: libpysupsmufloat.so and libpysupsmudouble.so. If you do not want to compile these, copies have been provided in the repository.
+
+Make sure to store your shared libraries in a location where they will be searched/accessible by Python. To eliminate issues with this, we have set up our Python test program to search its directory for the shared libraries. 
+
+Now, to use the Python interface, there are two files. The main module is supersmoothergpu.py, which is imported by the test example program, supersmoother_test_example.py. 
+
+The Python module contains a few additional options over the C interface. 
+* It allows you to hide the output of the C shared libraries by setting the verbose mode flag to false.
+* If you are unsure of the number of frequencies to use, it employs the method by Richards et al. (2011) for selecting the number of frequencies.
+* By default, it will set the alpha parameter to 9.0 for period finding.
+* By default, it will use 32 bit floating point precision (FP32) over FP64. This is because many consumer grade GPUs have limited hardware dedicated to FP32. However, the user may wish to change this to FP64.
+
+
+
+
+
