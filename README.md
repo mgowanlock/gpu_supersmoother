@@ -152,7 +152,7 @@ The Python module contains a few additional options over the C interface.
 * It allows you to hide the output of the C shared libraries by setting the verbose mode flag to false.
 * If you are unsure of the number of frequencies to use, it employs the method by Richards et al. (2011) for selecting the number of frequencies.
 * By default, it will set the alpha parameter to 9.0 for period finding.
-* By default, it will use 32 bit floating point precision (FP32) over FP64. This is because many consumer grade GPUs have limited hardware dedicated to FP32. However, the user may wish to change this to FP64.
+* By default, it will use 32 bit floating point precision (FP32) over FP64. This is because many consumer grade GPUs have limited hardware dedicated to FP64. However, the user may wish to change this to FP64.
 
 
 
