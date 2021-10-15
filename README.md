@@ -40,7 +40,7 @@ $make
 
 ## Running the program using the C interface:
 After compiling the computer program, you must enter the following command line arguments:
-\<dataset file name\> \<minimum frequency\> \<maximum frequency\> \<number of frequencies to search\> \<mode\> \<alpha\>
+\<dataset file name\> \<minimum frequency\> \<maximum frequency\> \<number of frequencies to search\> \<alpha\> \<mode\> 
   
 Modes are as follows:
 * 1- [Original Super Smoother] GPU to process a single object or batch of objects
