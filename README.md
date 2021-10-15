@@ -84,6 +84,8 @@ Observe the following:
 ## Example Directory
   * The example directory contains the derived periods for two implementations: 1) the original Super Smoother algorithm; and 2) the more efficient single-pass variant of the algorithm. The parameters were as follows:
 
+DTYPE: float (32-bit precision)
+
 Minimum Frequency: 0.100000
 
 Maximum Frequency: 10.000000
