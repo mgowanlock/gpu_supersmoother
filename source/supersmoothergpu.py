@@ -112,13 +112,13 @@ def computeNumFreqAuto(objId, timeX, fmin, fmax):
 
 
 
-def supersmoother(objId, timeX, magY, magDY, minFreq, maxFreq, MODE, alphain=9.0, freqToTest="auto", dtype="float", verbose="false"):
+def supersmoother(objId, timeX, magY, magDY, minFreq, maxFreq, MODE, alphain=9.0, freqToTest="auto", dtype="float", verbose=False):
 
     ###############################
     #Check for valid parameters and set verbose mode and generate frequencies for auto mode 
 
     #prevent C output from printing to screen
-    if (verbose=="false"):
+    if (verbose==False):
         redirect_stdout()
 
     #if the user doesn't specify the number of frequencies
@@ -235,37 +235,37 @@ def supersmoother(objId, timeX, magY, magDY, minFreq, maxFreq, MODE, alphain=9.0
 
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     
 
-    fname="../data/SDSS_stripe82/SDSS_stripe82_band_z.txt"
+#     fname="../data/SDSS_stripe82/SDSS_stripe82_band_z.txt"
 
-    #for single object (first object from stripe82)
-    # fname="../data/SDSS_stripe82/SDSS_stripe82_band_z_obj_2794912.txt"
+#     #for single object (first object from stripe82)
+#     # fname="../data/SDSS_stripe82/SDSS_stripe82_band_z_obj_2794912.txt"
     
     
-    objIdArr=getColumn(fname, 0)
-    timeXArr=getColumn(fname, 1)
-    magYArr=getColumn(fname, 2)
-    magDYArr=getColumn(fname, 3)
+#     objIdArr=getColumn(fname, 0)
+#     timeXArr=getColumn(fname, 1)
+#     magYArr=getColumn(fname, 2)
+#     magDYArr=getColumn(fname, 3)
 
 
     
-    min_f=0.1
-    max_f=10.0
-    N_f=330000
-    alpha=9.0
-    ssmode=1
-    dtype="double"
-    verbose="false"
+#     min_f=0.1
+#     max_f=10.0
+#     N_f=330000
+#     alpha=9.0
+#     ssmode=1
+#     dtype="double"
+#     verbose="false"
 
     
 
-    #use default parameters
-    # objIds, periods, pgrams = supersmoother(objIdArr, timeXArr, magYArr, magDYArr, min_f, max_f, ssmode)    
+#     #use default parameters
+#     # objIds, periods, pgrams = supersmoother(objIdArr, timeXArr, magYArr, magDYArr, min_f, max_f, ssmode)    
     
-    #with all parameters assigned    
-    objIds, periods, pgrams = supersmoother(objIdArr, timeXArr, magYArr, magDYArr, min_f, max_f, ssmode, alpha, N_f, dtype, verbose)    
+#     #with all parameters assigned    
+#     objIds, periods, pgrams = supersmoother(objIdArr, timeXArr, magYArr, magDYArr, min_f, max_f, ssmode, alpha, N_f, dtype, verbose)    
 
-    print("[Python] Obj 0: objId: %s period: %f" %(objIds[0],periods[0]))
+#     print("[Python] Obj 0: objId: %s period: %f" %(objIds[0],periods[0]))
 

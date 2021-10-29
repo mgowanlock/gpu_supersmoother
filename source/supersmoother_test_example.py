@@ -25,16 +25,16 @@ if __name__ == "__main__":
     N_f=330000
     alpha=9.0
     ssmode=1
-    dtype="float"
-    verbose="false"
+    dtype="double"
+    verbose=False
 
     
 
     #use default parameters
-    objIds, periods, pgrams = ss.supersmoother(objIdArr, timeXArr, magYArr, magDYArr, min_f, max_f, ssmode)    
+    #objIds, periods, pgrams = ss.supersmoother(objIdArr, timeXArr, magYArr, magDYArr, min_f, max_f, ssmode)    
     
     #with all parameters assigned    
-    # objIds, periods, pgrams = ss.supersmoother(objIdArr, timeXArr, magYArr, magDYArr, min_f, max_f, ssmode, alpha, N_f, dtype, verbose)    
+    objIds, periods, pgrams = ss.supersmoother(objIdArr, timeXArr, magYArr, magDYArr, min_f, max_f, ssmode, alpha, N_f, dtype, verbose)    
 
     print("[Python] Obj 0: objId: %s period: %f" %(objIds[0],periods[0]))
 
